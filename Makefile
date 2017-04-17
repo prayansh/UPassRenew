@@ -6,4 +6,5 @@ run:
 
 clean:
 	find . -name '*.log' -delete
+	find . -name '*.pyc' -delete
 	find . -name 'config.dat' -delete
