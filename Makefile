@@ -2,7 +2,7 @@ setup:
 	pip install -r requirements.txt
 
 run:
-	python src/build.py
+	python src/main.py
 
 clean:
 	find . -name '*.log' -delete
