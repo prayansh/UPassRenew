@@ -7,7 +7,7 @@ from UPassExceptions import CredentialsNotFound, NothingToRenew, InvalidCredenti
 from encryption import login_credentials
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-dir_path_webdriver = os.path.join(dir_path, 'lib/')
+dir_path_webdriver = os.path.join(dir_path, '../lib/')
 
 
 def choose_school(school_name, user=None, password=None, dev=False):
