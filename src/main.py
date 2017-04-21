@@ -1,22 +1,14 @@
-import os
-
-from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 
 from UPassExceptions import CredentialsNotFound, NothingToRenew, InvalidCredentials
 from encryption import login_credentials
-
-dir_path = os.path.dirname(os.path.realpath(__file__))
-dir_path_webdriver = os.path.join(dir_path, '../lib/')
+from browser import getBrowser
 
 
 def choose_school(school_name, user=None, password=None, dev=False):
     if user is None or password is None:
         raise CredentialsNotFound("Username and Password Not Found")
-    if dev:
-        browser = webdriver.Chrome(os.path.join(dir_path_webdriver, 'chromedriver'))
-    else:
-        browser = webdriver.PhantomJS(os.path.join(dir_path_webdriver, 'phantomjs'))
+    browser = getBrowser(dev)
     browser.get("https://upassbc.translink.ca/")
     print browser.current_url
     el = browser.find_element_by_id("PsiId")
@@ -34,7 +26,7 @@ def login_ubc(browser, user, password):
     browser.find_element_by_id('password').send_keys(password)
     browser.find_element_by_name('action').click()
     if "https://upassbc.translink.ca" not in str(browser.current_url):
-        raise InvalidCredentials
+        raise InvalidCredentials(user=user)
     renew_upass(browser)
 
 
@@ -55,7 +47,7 @@ def renew_upass(browser):
 def main():
     user, password = login_credentials()
     try:
-        choose_school("University of British Columbia", user, password, False)
+        choose_school("University of British Columbia", user, password, True)
     except NoSuchElementException, e:
         print "Ran into an error!\n {}".format(str(e))
     except InvalidCredentials, e:
