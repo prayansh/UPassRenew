@@ -9,12 +9,13 @@ Install xcode command line tools and homebrew.
 Remaining dependencies can then be installed by running:
 
 ```sh
-brew install phantomjs
-sudo easy_install pip
-pip install -U -r requirements.txt
+make setup
 ```
 
 # Usage
+```sh
+make run
+```
 
 # License
 ```
