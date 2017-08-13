@@ -2,9 +2,13 @@
  - A simple script which automates renewing your UPass
 
 # How to Build
-##OS X Prerequisites
+##OS X prerequisites
 
 Install xcode command line tools and homebrew.
+
+##Windows prerequisites
+
+Install python and pip following this [guide](https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 
 Remaining dependencies can then be installed by running:
 
